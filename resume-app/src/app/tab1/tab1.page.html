@@ -1,1 +1,52 @@
-<ion-content [fullscreen]="true"> </ion-content>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Fill Your Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit() " class="md">
+    <ion-item>
+      <ion-input
+        label="Name"
+        labelPlacement="floating"
+        type="text"
+        formControlName="name"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        label="Email"
+        type="email"
+        labelPlacement="floating"
+        formControlName="email"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        label="Phone"
+        type="tel"
+        labelPlacement="floating"
+        formControlName="phone"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        label="City"
+        type="text"
+        labelPlacement="floating"
+        formControlName="city"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        label="Address"
+        labelPlacement="floating"
+        formControlName="address"
+      ></ion-input>
+    </ion-item>
+    <ion-button expand="block" type="submit" [disabled]="form.invalid"
+      >Submit</ion-button
+    >
+  </form>
+</ion-content>
