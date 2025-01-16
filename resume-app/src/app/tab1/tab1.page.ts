@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedStateService } from '../shared-state.service';
+
 import {
   IonInput,
   IonItem,
@@ -9,10 +11,8 @@ import {
   IonHeader,
   IonToolbar,
   IonTitle,
-  IonContent
+  IonContent,
 } from '@ionic/angular/standalone';
-
-
 
 @Component({
   selector: 'app-tab1',
@@ -27,14 +27,18 @@ import {
     IonHeader,
     IonToolbar,
     IonTitle,
-    IonContent
+    IonContent,
   ],
   standalone: true,
 })
 export class Tab1Page implements OnInit {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private sharedState: SharedStateService,
+    private router: Router
+  ) {
     this.form = this.fb.group({
       city: ['', Validators.required],
       name: ['', Validators.required],
@@ -47,8 +51,9 @@ export class Tab1Page implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
+    // Update shared state
+    this.sharedState.updateFormData(this.form.value);
     localStorage.setItem('formData', JSON.stringify(this.form.value));
     this.router.navigate(['/tabs/tab2']);
-    console.log(this.form.value);
   }
 }
