@@ -1,0 +1,43 @@
+<ion-content>
+  <div class="header">
+    <img src="https://randomuser.me/api/portraits/women/40.jpg" alt="rema" />
+    <span>
+      <h4>{{ formData.name }}</h4>
+      <p>Ui Designer</p>
+    </span>
+  </div>
+  <div class="grid">
+    <div class="col-1">
+      <span>
+        <ion-icon name="navigate-circle-outline" size="medium" ></ion-icon>
+        {{formData.city}}
+      </span>
+
+      <span>
+        <ion-icon name="map-outline" size="medium"></ion-icon>
+        {{formData.address}}
+      </span>
+      <span>
+        <ion-icon name="call-outline" size="medium"></ion-icon>
+        {{formData.phone}}
+      </span>
+      <span>
+        <ion-icon name="mail-outline" size="medium"></ion-icon>
+        {{formData.email}}
+      </span>
+
+      <span>
+        <ion-icon name="thermometer-outline" size="medium"></ion-icon>
+        {{weather.temperature}} °C
+      </span>
+
+      <span>
+        <ion-icon name="speedometer-outline"></ion-icon>
+        {{weather.windSpeed}} km/h
+      </span>
+
+      <ion-button expand="block" (click)="goBack()">Back</ion-button>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</ion-content>
